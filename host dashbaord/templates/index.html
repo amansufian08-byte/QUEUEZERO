@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>QUEUEZERO Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+    <div class="logo">
+        <span>Q</span> QUEUEZERO
+    </div>
+
+    <div class="header-right">
+
+        <div class="live">
+            <span></span>
+            SYSTEM LIVE
+        </div>
+
+        <a href="/user">
+            User View →
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div>
+
+            <p class="eyebrow">
+                SMART QUEUE MANAGEMENT
+            </p>
+
+            <h1>
+                Manage your queue.<br>
+                <span>Without the chaos.</span>
+            </h1>
+
+            <p class="hero-text">
+                Real-time queue intelligence for
+                faster service and happier customers.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>PEOPLE WAITING</span>
+
+                <div class="stat-icon purple">
+                    👥
+                </div>
+
+            </div>
+
+            <strong id="waiting">
+                0
+            </strong>
+
+            <small>
+                In queue
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>NOW SERVING</span>
+
+                <div class="stat-icon blue">
+                    🎫
+                </div>
+
+            </div>
+
+            <strong id="current">
+                QZ-8
+            </strong>
+
+            <small>
+                Current ticket
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>SERVICE SPEED</span>
+
+                <div class="stat-icon green">
+                    ⚡
+                </div>
+
+            </div>
+
+            <strong>
+                <span id="serviceRate">
+                    2
+                </span>
+            </strong>
+
+            <small>
+                People / minute
+            </small>
+
+            <button
+                class="change-rate-button"
+                onclick="changeServiceRate()">
+
+                ✏ Change Rate
+
+            </button>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>EST. WAIT</span>
+
+                <div class="stat-icon orange">
+                    ⏱
+                </div>
+
+            </div>
+
+            <strong id="waitTime">
+                0m
+            </strong>
+
+            <small>
+                Average wait
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN GRID -->
+
+    <section class="main-grid">
+
+
+        <!-- QUEUE CONTROL -->
+
+        <div class="panel queue-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="label">
+                        LIVE QUEUE
+                    </p>
+
+                    <h2>
+                        Queue Control
+                    </h2>
+
+                </div>
+
+                <div class="live small-live">
+                    <span></span>
+                    LIVE
+                </div>
+
+            </div>
+
+
+            <div class="current-ticket">
+
+                <small>
+                    NOW SERVING
+                </small>
+
+                <div id="bigCurrent">
+                    QZ-8
+                </div>
+
+                <p>
+                    Please proceed to the
+                    active counter.
+                </p>
+
+            </div>
+
+
+            <div class="progress-area">
+
+                <div class="progress-info">
+
+                    <span>
+                        Queue progress
+                    </span>
+
+                    <strong id="progressText">
+                        5%
+                    </strong>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        id="progressBar"
+                        class="progress-bar">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="control-buttons">
+
+                <button
+                    class="btn-primary"
+                    onclick="nextPerson()">
+
+                    ▶ Call Next
+
+                </button>
+
+
+                <button
+                    class="btn-secondary"
+                    onclick="addPerson()">
+
+                    + Add Person
+
+                </button>
+
+
+                <button
+                    class="btn-counter"
+                    onclick="changeCounter()">
+
+                    📍 Change Counter
+
+                </button>
+
+
+                <button
+                    class="btn-danger"
+                    onclick="resetQueue()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTELLIGENCE -->
+
+        <div class="panel intelligence">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="label">
+                        SMART INTELLIGENCE
+                    </p>
+
+                    <h2>
+                        Queue Health
+                    </h2>
+
+                </div>
+
+                <div class="health-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="health-score">
+
+                <div>
+
+                    <span>
+                        RISK SCORE
+                    </span>
+
+                    <strong id="riskScore">
+                        0
+                    </strong>
+
+                </div>
+
+                <span
+                    id="riskText"
+                    class="low-risk">
+
+                    LOW RISK
+
+                </span>
+
+            </div>
+
+
+            <div class="health-message">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <span id="healthMessage">
+                    Queue is flowing smoothly.
+                </span>
+
+            </div>
+
+
+            <div class="health-items">
+
+                <div>
+                    <span>Queue load</span>
+                    <strong id="peopleAhead">0</strong>
+                </div>
+
+                <div>
+                    <span>Next ticket</span>
+                    <strong id="nextTicket">QZ-9</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOTTOM -->
+
+    <section class="bottom-grid">
+
+        <div class="mini-card">
+
+            <span>👥</span>
+
+            <div>
+                <small>PEOPLE AHEAD</small>
+                <strong id="peopleAhead">
+                    0
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="mini-card">
+
+            <span>🎫</span>
+
+            <div>
+                <small>NEXT TICKET</small>
+                <strong id="nextTicket">
+                    QZ-9
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="mini-card">
+
+            <span>📍</span>
+
+            <div>
+                <small>ACTIVE COUNTER</small>
+
+                <strong id="activeCounter">
+                    Counter 03
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="mini-card">
+
+            <span>✓</span>
+
+            <div>
+                <small>SYSTEM STATUS</small>
+
+                <strong class="online">
+                    Operational
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    QUEUEZERO © 2026 · Smart Queue Intelligence
+</footer>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>

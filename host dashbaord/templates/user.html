@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>QUEUEZERO User</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<header>
+
+    <div class="logo">
+        <span>Q</span> QUEUEZERO
+    </div>
+
+    <div class="header-right">
+
+        <div class="live">
+            <span></span>
+            LIVE
+        </div>
+
+        <a href="/">
+            Admin →
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero user-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR QUEUE, YOUR TIME
+            </p>
+
+            <h1>
+                Skip the line.<br>
+                <span>Keep your time.</span>
+            </h1>
+
+            <p class="hero-text">
+                Join the queue digitally and
+                we'll keep you updated.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- JOIN -->
+
+    <section
+        id="joinSection"
+        class="panel join-panel">
+
+        <div class="join-icon">
+            🎫
+        </div>
+
+        <p class="label">
+            DIGITAL QUEUE
+        </p>
+
+        <h2>
+            Join the Queue
+        </h2>
+
+        <p>
+            Get your ticket instantly and
+            track your position in real time.
+        </p>
+
+        <button
+            class="btn-primary join-button"
+            onclick="joinQueue()">
+
+            🎟 Get My Ticket
+
+        </button>
+
+    </section>
+
+
+    <!-- TICKET -->
+
+    <section
+        id="ticketSection"
+        class="hidden">
+
+        <div class="ticket-card">
+
+            <div class="ticket-top">
+
+                <div>
+
+                    <p class="label">
+                        YOUR TICKET
+                    </p>
+
+                    <h2 id="ticketNumber">
+                        QZ-9
+                    </h2>
+
+                </div>
+
+                <div class="ticket-status">
+                    ● ACTIVE
+                </div>
+
+            </div>
+
+
+            <div class="user-stats">
+
+                <div>
+
+                    <small>
+                        POSITION
+                    </small>
+
+                    <strong id="userPosition">
+                        1
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        PEOPLE AHEAD
+                    </small>
+
+                    <strong id="userAhead">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        EST. WAIT
+                    </small>
+
+                    <strong id="userWait">
+                        0 min
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-area">
+
+                <div class="progress-info">
+
+                    <span>
+                        Your progress
+                    </span>
+
+                    <strong id="userProgressText">
+                        5%
+                    </strong>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        id="userProgress"
+                        class="progress-bar">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <span>
+                    📍 Please go to
+                </span>
+
+                <strong>
+                    Counter
+                    <span id="userCounter">
+                        03
+                    </span>
+                </strong>
+
+            </div>
+
+
+            <div
+                id="userMessage"
+                class="user-message">
+
+                You can relax.
+                We're tracking your place.
+
+            </div>
+
+
+            <div class="user-actions">
+
+                <button
+                    class="btn-secondary"
+                    onclick="refreshUser()">
+
+                    ↻ Refresh
+
+                </button>
+
+                <button
+                    class="btn-danger"
+                    onclick="leaveQueue()">
+
+                    Leave Queue
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    QUEUEZERO © 2026 · Smart Queue Intelligence
+</footer>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+
+</html>
